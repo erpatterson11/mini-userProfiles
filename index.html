@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="userProfiles">
+<html ng-app="quoteBook">
 <head>
     <meta charset="utf-8">
     <title>mini-userProfiles</title>
@@ -7,13 +7,22 @@
 </head>
 <body ng-controller="MainController">
 
+<form class="add-quote" action="index.html" method="post">
+  <input type="text" name="Quote" placeholder="Quote" ng-model="newQuote.text"/>
+  <input type="text" name="Author" placeholder="Author" ng-model="newQuote.author"/>
+  <button type="button" name="Add Quote" ng-click="addQuote(newQuote)">Add Quote</button>
+</form>
 
-  <div ng-repeat="user in users" ng-class="{favorite: user.isFavorite}">
-    <img ng-src="{{user.avatar}}"></img>
-    <span>{{ user.first_name }}</span>
-    <span>{{ user.last_name }}</span>
-    <button type="button" ng-click="toggleFavorite(user.id)">Favorite</button>
-  </div>
+<input type="text" ng-model="filterAuth.input" />
+<select ng-model="filterAuth.select" ng-options="quote.author for quote in quotes" option(value="")>
+  <option value=""></option>
+</select>
+
+<div class="quote-block" ng-repeat="quote in quotes | filter: filterAuth.input | filter: filterAuth.select">
+  <div class="quote">"{{ quote.text }}""</div>
+  <div class="author">{{ quote.author }}</div>
+  <button type="button" name="removeQuote" ng-click="removeQuote(quote.id)">Remove</button>
+</div>
 
      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
      <script src="app.js"></script>

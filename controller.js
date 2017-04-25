@@ -1,15 +1,29 @@
-angular.module('userProfiles').controller('MainController', function($scope, mainService){
+angular.module('quoteBook').controller('MainController', function($scope, mainService){
 
-$scope.getUsers = function() {
-  $scope.users = mainService.getUsers();
-  console.log($scope.users);
-};
+$scope.getQuotes = function() {
+  $scope.quotes = mainService.getQuotes();
+}();
 
-$scope.getUsers();
-
-$scope.toggleFavorite = function(userID) {
-  mainService.toggleFavorite(userID);
+$scope.addQuote = function(newQuote) {
+  mainService.addQuote(newQuote);
 }
+
+$scope.removeQuote = function(removalID) {
+  mainService.removeQuote(removalID);
+}
+
+
+
+// $scope.filterQuotes = function() {
+//   if($scope.filterAuth) {
+//     console.log($scope.typeFilter, "type");
+//     return $scope.typeFilter;
+//   } else if ($scope.typeFilter) {
+//     console.log($scope.typeFilter.author, "select");
+//     return $scope.typeFilter.author;
+//   }
+// }
+
 
 
 
