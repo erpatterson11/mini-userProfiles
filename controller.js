@@ -6,25 +6,12 @@ $scope.getQuotes = function() {
 
 $scope.addQuote = function(newQuote) {
   mainService.addQuote(newQuote);
+  $scope.newQuote = {};
 }
 
 $scope.removeQuote = function(removalID) {
   mainService.removeQuote(removalID);
 }
-
-
-
-// $scope.filterQuotes = function() {
-//   if($scope.filterAuth) {
-//     console.log($scope.typeFilter, "type");
-//     return $scope.typeFilter;
-//   } else if ($scope.typeFilter) {
-//     console.log($scope.typeFilter.author, "select");
-//     return $scope.typeFilter.author;
-//   }
-// }
-
-
 
 
 

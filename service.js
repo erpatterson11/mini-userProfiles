@@ -27,6 +27,7 @@ angular.module('quoteBook').service('mainService', function() {
 
 // Add new quote to array based on user input passed through controller function of same name
   this.addQuote = function(newQuote) {
+    // console.log("service")
     quotes.push({
       text: newQuote.text,
       author: newQuote.author
